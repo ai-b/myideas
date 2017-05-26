@@ -1,0 +1,2 @@
+# myideas
+random projects
