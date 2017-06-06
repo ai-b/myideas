@@ -1,0 +1,26 @@
+//Fermat's factorization method
+//Represents an odd integer n as the difference of two squares: n=a^2-b^2 therefore n=(a-b)(a+b) 
+//and it is a proper factorization if neither factors are 1.
+
+#include "stdafx.h"
+#include<cstdio>
+
+#include <math.h>  
+int main()
+{
+	printf("n = ");
+	int n;
+	scanf_s("%d",&n);
+	double a = ceil(sqrt(n)); //printf("a is %g \n",a);
+	double b2 = a*a - n; //printf("b is %g \n", b2);
+		while (((floor(sqrt(b2)))*(floor(sqrt(b2))))!= b2)//cant square double
+		{
+			a = a + 1; //printf("a= %g \n", a);
+			b2 = a*a - n;// printf("b2= %g \n", b2);
+		}
+		double result1 = a;
+		double result2 = sqrt(b2);
+		printf("the result is that %g squared - %g squared is %d \n",result1,result2,n);
+
+	return 0;
+}
