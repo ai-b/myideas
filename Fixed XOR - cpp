@@ -1,0 +1,107 @@
+//Fixed XOR
+//Write a function that takes two equal - length buffers and produces their XOR combination.
+//If your function works properly, then when you feed it the string :
+//1c0111001f010100061a024b53535009181c
+//... after hex decoding, and when XOR'd against:
+//686974207468652062756c6c277320657965
+//... should produce :
+//746865206b696420646f6e277420706c6179
+
+#include "stdafx.h"
+#include <iostream>
+#include <bitset>
+#include<string>
+#include<conio.h>
+using namespace std;
+
+string htb(char s)
+{
+	switch (s)
+	{
+	case '0': return "0000";
+	case '1': return "0001";
+	case '2': return "0010";
+	case '3': return "0011";
+	case '4': return "0100";
+	case '5': return "0101";
+	case '6': return "0110";
+	case '7': return "0111";
+	case '8': return "1000";
+	case '9': return "1001";
+	case 'a': return "1010";
+	case 'b': return "1011";
+	case 'c': return "1100";
+	case 'd': return "1101";
+	case 'e': return "1110";
+	case 'f': return "1111";
+	}
+
+}
+
+string bth(string t)
+{
+
+	if (t == "0000") return "0";
+	if (t == "0001") return "1";
+	if (t == "0010") return "2";
+	if (t == "0011") return "3";
+	if (t == "0100") return "4";
+	if (t == "0101") return "5";
+	if (t == "0110") return "6";
+	if (t == "0111") return "7";
+	if (t == "1000") return "8";
+	if (t == "1001") return "9";
+	if (t == "1010") return "a";
+	if (t == "1011") return "b";
+	if (t == "1100") return "c";
+	if (t == "1101") return "d";
+	if (t == "1110") return "e";
+	if (t == "1111") return "f";
+}
+
+
+int main()
+{
+	std::string a;
+	std::string b;
+	cout << "first hex string is: ";
+	std::cin >> a;
+	cout << "second hex string is: ";
+	std::cin >> b;
+
+	//condition
+	int n = a.length();
+	int m = b.length();
+	if (n == m)
+	{	
+		//hex to bin
+		std::string ab;
+		std::string bb; 
+		for (int i = 0; i < n; i++)
+		{
+			ab = ab + htb(a[i]);
+			bb = bb + htb(b[i]);
+		}
+		std::string xor;
+		for (int i = 0; i < ab.length(); i++)
+		{
+			if (ab[i] == bb[i]) { xor = xor+'0'; }
+			if (ab[i] != bb[i]) { xor = xor+'1'; }
+		}
+		//xor to hex
+		int i = 0;
+		while (i <= ab.length()-4)
+		{
+			std::string test;
+			test = test + xor[i] + xor[i + 1] + xor[i + 2] + xor[i + 3];
+			cout << bth(test);
+			i = i + 4;
+		}
+	}
+
+	else
+	{
+		cout << "Err" << endl;
+	}
+	return 0;
+}
