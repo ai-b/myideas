@@ -1,0 +1,140 @@
+//Convert hex to base64
+
+
+#include "stdafx.h"
+#include <iostream>
+#include <bitset>
+#include<string>
+#include<conio.h>
+using namespace std;
+
+string htb(char s)
+{
+	switch (s)
+	{
+	case '0': return "0000";
+	case '1': return "0001";
+	case '2': return "0010";
+	case '3': return "0011";
+	case '4': return "0100";
+	case '5': return "0101";
+	case '6': return "0110";
+	case '7': return "0111";
+	case '8': return "1000";
+	case '9': return "1001";
+	case 'a': return "1010";
+	case 'b': return "1011";
+	case 'c': return "1100";
+	case 'd': return "1101";
+	case 'e': return "1110";
+	case 'f': return "1111";
+
+	}
+}
+
+string btb(string str)
+{
+
+	if (str == "000000") return "A";
+	if (str == "000001") return "B";
+	if (str == "000010") return "C";
+	if (str == "000011") return "D";
+	if (str == "000100") return "E";
+	if (str == "000101") return "F";
+	if (str == "000110") return "G";
+	if (str == "000111") return "H";
+	if (str == "001000") return "I";
+	if (str == "001001") return "J";
+	if (str == "001010") return "K";
+	if (str == "001011") return "L";
+	if (str == "001100") return "M";
+	if (str == "001101") return "N";
+	if (str == "001110") return "O";
+	if (str == "001111") return "P";
+	if (str == "010000") return "Q";
+	if (str == "010001") return "R";
+	if (str == "010010") return "S";
+	if (str == "010011") return "T";
+	if (str == "010100") return "U";
+	if (str == "010101") return "V";
+	if (str == "010110") return "W";
+	if (str == "010111") return "X";
+	if (str == "011000") return "Y";
+	if (str == "011001") return "Z";
+	if (str == "011010") return "a";
+	if (str == "011011") return "b";
+	if (str == "011100") return "c";
+	if (str == "011101") return "d";
+	if (str == "011110") return "e";
+	if (str == "011111") return "f";
+	if (str == "100000") return "g";
+	if (str == "100001") return "h";
+	if (str == "100010") return "i";
+	if (str == "100011") return "j";
+	if (str == "100100") return "k";
+	if (str == "100101") return "l";
+	if (str == "100110") return "m";
+	if (str == "100111") return "n";
+	if (str == "101000") return "o";
+	if (str == "101001") return "p";
+	if (str == "101010") return "q";
+	if (str == "101011") return "r";
+	if (str == "101100") return "s";
+	if (str == "101101") return "t";
+	if (str == "101110") return "u";
+	if (str == "101111") return "v";
+	if (str == "110000") return "w";
+	if (str == "110001") return "x";
+	if (str == "110010") return "y";
+	if (str == "110011") return "z";
+	if (str == "110100") return "0";
+	if (str == "110101") return "1";
+	if (str == "110110") return "2";
+	if (str == "110111") return "3";
+	if (str == "111000") return "4";
+	if (str == "111001") return "5";
+	if (str == "111010") return "6";
+	if (str == "111011") return "7";
+	if (str == "111100") return "8";
+	if (str == "111101") return "9";
+	if (str == "111110") return " ";
+	if (str == "111111") return "/";
+}
+
+
+int main()
+{
+	std::string hexstring;
+	cout << "the hex string is: ";
+	std::cin >> hexstring;
+
+		//hex to bin
+		std::string binstring;
+		for (int i = 0; i < hexstring.length(); i++)
+		{
+			binstring = binstring + htb(hexstring[i]);
+		}
+		//condition
+		if (binstring.length() % 6 != 0)
+		{
+			for (int i = 0; i < binstring.length() % 6; i++)
+			{
+				binstring = binstring + '0';
+			}
+
+		}
+		
+		int i = 0;
+		while (i <= binstring.length() - 6)
+		{
+			std::string test;
+			test = test + binstring[i] + binstring[i + 1] + binstring[i + 2] + binstring[i + 3]+ binstring[i+4] + binstring[i+5];
+			cout <<  btb(test) ;
+			i = i + 6;
+		}
+
+
+		
+	
+	return 0;
+}
