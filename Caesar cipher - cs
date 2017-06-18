@@ -1,0 +1,79 @@
+using System.IO;
+using System;
+class Program
+    {
+        static void Main()
+        {
+            string text = "fraqrtfrlzkefpzkxywsxygzxyzzzfwhphmsmumtgzfpkecuwybnvzgzqo...";
+            int[] textz = new int[text.Length];
+            int[] textzz = new int[text.Length];
+            string[] textul = new string[text.Length];
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == 'a') textz[i] = 0;
+                if (text[i] == 'b') textz[i] = 1;
+                if (text[i] == 'c') textz[i] = 2;
+                if (text[i] == 'd') textz[i] = 3;
+                if (text[i] == 'e') textz[i] = 4;
+                if (text[i] == 'f') textz[i] = 5;
+                if (text[i] == 'g') textz[i] = 6;
+                if (text[i] == 'h') textz[i] = 7;
+                if (text[i] == 'i') textz[i] = 8;
+                if (text[i] == 'j') textz[i] = 9;
+                if (text[i] == 'k') textz[i] = 10;
+                if (text[i] == 'l') textz[i] = 11;
+                if (text[i] == 'm') textz[i] = 12;
+                if (text[i] == 'n') textz[i] = 13;
+                if (text[i] == 'o') textz[i] = 14;
+                if (text[i] == 'p') textz[i] = 15;
+                if (text[i] == 'q') textz[i] = 16;
+                if (text[i] == 'r') textz[i] = 17;
+                if (text[i] == 's') textz[i] = 18;
+                if (text[i] == 't') textz[i] = 19;
+                if (text[i] == 'u') textz[i] = 20;
+                if (text[i] == 'v') textz[i] = 21;
+                if (text[i] == 'w') textz[i] = 22;
+                if (text[i] == 'x') textz[i] = 23;
+                if (text[i] == 'y') textz[i] = 24;
+                if (text[i] == 'z') textz[i] = 25;
+            }
+            for (int i = 0; i < text.Length - 1; i++)
+            {
+                if (i % 2 == 0)
+                    textzz[i] = (17 * textz[i] + 5 * textz[i + 1]) % 26;
+                else
+                    textzz[i] = (18 * textz[i - 1] + 23 * textz[i]) % 26;
+            }
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (textzz[i] == 0) textul[i] = "a";
+                if (textzz[i] == 1) textul[i] = "b";
+                if (textzz[i] == 2) textul[i] = "c";
+                if (textzz[i] == 3) textul[i] = "d";
+                if (textzz[i] == 4) textul[i] = "e";
+                if (textzz[i] == 5) textul[i] = "f";
+                if (textzz[i] == 6) textul[i] = "g";
+                if (textzz[i] == 7) textul[i] = "h";
+                if (textzz[i] == 8) textul[i] = "i";
+                if (textzz[i] == 9) textul[i] = "j";
+                if (textzz[i] == 10) textul[i] = "k";
+                if (textzz[i] == 11) textul[i] = "l";
+                if (textzz[i] == 12) textul[i] = "m";
+                if (textzz[i] == 13) textul[i] = "n";
+                if (textzz[i] == 14) textul[i] = "o";
+                if (textzz[i] == 15) textul[i] = "p";
+                if (textzz[i] == 16) textul[i] = "q";
+                if (textzz[i] == 17) textul[i] = "r";
+                if (textzz[i] == 18) textul[i] = "s";
+                if (textzz[i] == 19) textul[i] = "t";
+                if (textzz[i] == 20) textul[i] = "u";
+                if (textzz[i] == 21) textul[i] = "v";
+                if (textzz[i] == 22) textul[i] = "w";
+                if (textzz[i] == 23) textul[i] = "x";
+                if (textzz[i] == 24) textul[i] = "y";
+                if (textzz[i] == 25) textul[i] = "z";
+            }
+            for (int i = 0; i < text.Length; i++)
+            { Console.Write(textul[i] + " "); }
+        }
+    }
