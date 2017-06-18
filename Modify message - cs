@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace thisiscs
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            string p = "SEND$1000TOBOB";
+            string m = "SEND$1000TOEVE";
+
+            int[] c ={00101110, 11011011, 10111011, 00000100, 10000111, 11010101, 10001111, 10010000,
+            01101111, 00100011, 11111010, 11111001, 10110100, 11011101};
+
+            int[] k = new int[c.Length];
+            int[] pp = new int[p.Length];
+            int[] cc = new int[p.Length];
+            int[] mm = new int[m.Length];
+
+            string ccc = String.Format("{0:X4}", c);
+            Console.WriteLine("Primul mesaj necriptat p:");
+            for (int i = 0; i < p.Length; i++)
+            {
+                pp[i] = Convert.ToInt32(p[i]);
+                Console.Write((char)pp[i] + " ");
+            }
+            Console.Write("->");
+            for (int i = 0; i < c.Length; i++)
+            { Console.Write(pp[i] + " "); }
+            Console.WriteLine();
+
+            Console.WriteLine("Primul mesaj criptat c:");
+            for (int i = 0; i < c.Length; i++)
+            {
+                cc[i] = Convert.ToByte(ccc[i]);
+                Console.Write((char)cc[i] + " ");
+            }
+            Console.Write("->");
+            for (int i = 0; i < c.Length; i++)
+            { Console.Write(cc[i] + " "); }
+            Console.WriteLine();
+
+            Console.WriteLine("Aflam cheia k=c-p:");
+            for (int i = 0; i < c.Length; i++)
+            {
+                k[i] = (cc[i] - pp[i]) % 128;
+                if (k[i] < 0) { k[i] = (cc[i] - pp[i]) % 128 + 128; }
+                Console.Write((char)k[i] + " ");
+            }
+            Console.Write("->");
+            for (int i = 0; i < c.Length; i++)
+            { Console.Write(k[i] + " "); }
+            Console.WriteLine();
+
+            Console.WriteLine("Al doilea mesaj necriptat m:");
+            for (int i = 0; i < p.Length; i++)
+            { Console.Write(m[i] + " "); }
+            Console.Write("->");
+            for (int i = 0; i < c.Length; i++)
+            { Console.Write(Convert.ToInt32(m[i]) + " "); }
+            Console.WriteLine();
+
+            Console.WriteLine("Al doilea mesaj criptat m+k:");
+            for (int i = 0; i < c.Length; i++)
+            {
+                mm[i] = (Convert.ToInt32(m[i]) + k[i]) % 128;
+                Console.Write((char)mm[i] + " ");
+            }
+            Console.Write("->");
+            for (int i = 0; i < c.Length; i++)
+            { Console.Write(mm[i] + " "); }
+            Console.WriteLine();
+            Console.WriteLine();
+
+            for (int i = 0; i < c.Length; i++)
+            {
+                mm[i] = (Convert.ToInt32(m[i]) + k[i]) % 128;
+                Console.Write(Convert.ToString(mm[i], 2) + " ");
+            }
+            Console.WriteLine(" ");
+        }
+    }
+}
