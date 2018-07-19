@@ -1,0 +1,52 @@
+///write a text in a 4x4 block and output
+//the ciphertext by reading it in spiral
+//down the first column, then up the 
+//second column, and so on
+
+#include "stdafx.h"
+#include <iostream>
+#include<cstring>
+
+
+using namespace std;
+
+
+int main() {
+
+  char ctxt[] = "aigroejigannytar";
+	char ptxt[] = "aigrijaagentrony";
+	int n = 4;//nb of columns
+	int m = strlen(ctxt) / 4;//nb of rows
+
+
+	//decode
+	//line of text
+	for (int k = 1; k <= m; k++)
+	{
+		cout << ctxt[k - 1] << ctxt[2 * n - k] << ctxt[2 * n + k - 1] << ctxt[n*m - k];
+	}
+	cout << endl;
+
+
+	//code
+	//block of spiral text
+	for (int k = 0; k < n; k++)
+	{
+		if (k % 2 == 0)
+		{
+			cout << ptxt[k] << ptxt[k + 4] << ptxt[k + 8] << ptxt[k + 12] << endl;
+		}
+
+		else
+		{
+			cout << ptxt[k + 12] << ptxt[k + 8] << ptxt[k + 4] << ptxt[k] << endl;
+		}
+
+
+	}
+
+
+	return 0;
+
+
+}
