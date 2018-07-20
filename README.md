@@ -1,3 +1,2 @@
-# random
-random projects
-cpp, cs, java
+# Random
+A collection of console application projects
